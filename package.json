@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "lint": "eslint --ext .js src test",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@antv/data-set": "^0.9.5",
+    "babel-eslint": "^7.2.3",
+    "bizcharts": "^3.2.2",
+    "dva": "^2.4.0",
+    "mockjs": "^1.0.1-beta3",
+    "redbox-react": "^1.6.0",
+    "umi": "^2.0.0",
+    "umi-plugin-react": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-umi": "^0.1.1",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.12.0",
+    "cross-env": "^5.1.1"
+  }
+}
