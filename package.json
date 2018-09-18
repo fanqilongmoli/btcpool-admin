@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.9.5",
+    "axios": "^0.18.0",
     "babel-eslint": "^7.2.3",
     "bizcharts": "^3.2.2",
     "dva": "^2.4.0",
     "mockjs": "^1.0.1-beta3",
+    "react-recaptcha": "^2.3.10",
     "redbox-react": "^1.6.0",
     "umi": "^2.0.0",
     "umi-plugin-react": "^1.0.0"

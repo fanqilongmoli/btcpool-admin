@@ -1,37 +1,87 @@
-import fetch from 'dva/fetch';
+/* global window */
+import axios from 'axios'
+import cloneDeep from 'lodash.clonedeep'
+import config from '../utils/config'
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
+const fetch = (options) => {
+  let headers;
+
+  if (window.localStorage.getItem(`${config.prefix}token`) == null) {
+    headers = {};
+  } else {
+    headers = {'Authorization': 'Bearer ' + window.localStorage.getItem(`${config.prefix}token`)};
   }
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export default async function request(url, options) {
-  const response = await fetch(url, options);
-
-  checkStatus(response);
-
-  const data = await response.json();
-
-  const ret = {
+  let {
+    method = 'get',
     data,
-    headers: {},
-  };
+    url,
+  } = options;
 
-  if (response.headers.get('x-total-count')) {
-    ret.headers['x-total-count'] = response.headers.get('x-total-count');
+  const cloneData = cloneDeep(data);
+  switch (method.toLowerCase()) {
+    case 'get':
+      if (url.indexOf('?') > 0) {
+        url = url + '&time=' + new Date().getTime();
+      } else {
+        url = url + '?time=' + new Date().getTime();
+      }
+
+      return axios.get(url, {
+        params: cloneData,
+        headers: headers
+      });
+    case 'delete':
+      return axios.delete(url, {
+        data: cloneData,
+        headers: headers
+      });
+    case 'post':
+      return axios.post(url, cloneData, {
+        headers: headers
+      });
+    case 'put':
+      return axios.put(url, cloneData, {
+        headers: headers
+      });
+    case 'patch':
+      return axios.patch(url, cloneData, {
+        headers: headers
+      });
+    default:
+      return axios(options)
   }
+};
 
-  return ret;
+export default function request(options) {
+  return fetch(options).then(response => {
+    const {statusText, status} = response;
+    let data = response.data;
+    if (data instanceof Array) {
+      data = {
+        list: data,
+      }
+    }
+    return Promise.resolve({
+      success: true,
+      message: statusText,
+      statusCode: status,
+      ...data,
+    })
+  }).catch(error => {
+
+    console.log('error', error);
+    const {response} = error;
+    let msg;
+    let statusCode;
+    if (response && response instanceof Object) {
+      const {data, statusText} = response;
+      statusCode = response.status;
+      msg = data.errors || statusText
+    } else {
+      statusCode = 600;
+      msg = error.message || '网络错误'
+    }
+    return Promise.reject({success: false, statusCode, message: msg})
+  })
 }

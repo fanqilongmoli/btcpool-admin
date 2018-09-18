@@ -5,6 +5,8 @@ import Headers from "./Headers";
 import Bread from "./Bread";
 import withRouter from 'umi/withRouter';
 import {connect} from 'dva'
+import config from '../utils/config'
+import router from 'umi/router'
 
 const {Header, Content, Sider} = Layout;
 const App = ({dispatch, children, location}) => {
@@ -16,6 +18,21 @@ const App = ({dispatch, children, location}) => {
       })
     }
   };
+
+  /**
+   * token 不存在直接跳转到登录界面
+   */
+  if (window.localStorage.getItem(`${config.prefix}token`) == null && location.pathname !== config.loginPage) {
+    router.push('/login');
+  }
+
+  if (location.pathname === config.loginPage) {
+
+    return (
+      <div>
+        {children}
+      </div>)
+  }
 
 
   return (
