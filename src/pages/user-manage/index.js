@@ -1,9 +1,10 @@
 import React from 'react'
+import UserManage from "./components/UserManage";
 
 export default () => {
   return (
     <div>
-      普通用户管理
+      <UserManage/>
     </div>
   )
 }

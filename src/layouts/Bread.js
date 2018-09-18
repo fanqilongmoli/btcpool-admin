@@ -17,7 +17,7 @@ const breadcrumbNameMap = {
 const Bread = ({location}) => {
   console.log('location', location);
   return (
-    <Breadcrumb>
+    <Breadcrumb style={{background:'#000'}}>
       <Breadcrumb.Item><span style={{
         color: '#ffffff',
         fontSize: '20px',

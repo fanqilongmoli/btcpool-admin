@@ -40,12 +40,12 @@ const App = ({dispatch, children, location}) => {
       <Header style={{position: 'fixed', zIndex: 1, width: '100%'}}>
         <Headers/>
       </Header>
-      <Layout style={{background: '#000', marginTop: 64}}>
+      <Layout style={{ marginTop: 64}}>
         <Sider width={200} style={{background: '#000'}}>
           <Menus {...MenusProps}/>
         </Sider>
         <Content style={{padding: '24px', minHeight: 280}}>
-          <Bread location={location}/>
+          <Bread location={location} />
           {children}
         </Content>
       </Layout>

@@ -47,13 +47,6 @@ const Login = ({
     recaptchaInstance.reset();
   };
 
-  const registerClick = ()=>{
-    router.push('/register');
-  };
-
-  const forgetClick =()=>{
-    router.push('/forget');
-  };
 
   return (
     <div className={styles.form}>
@@ -86,10 +79,7 @@ const Login = ({
         <Button type="primary" onClick={handleEnter} loading={loading.effects.login}>
           登陆
         </Button>
-        <div className={styles.op}>
-          <span className={styles.forget} onClick={forgetClick}>忘记密码?</span>
-          <span className={styles.register} onClick={registerClick}>注册新账号</span>
-        </div>
+
       </Form>
 
       <Recaptcha
