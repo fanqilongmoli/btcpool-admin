@@ -1,9 +1,10 @@
 import React from 'react'
+import GoodsSetting from "./components/GoodsSetting";
 
 export default () => {
   return (
     <div>
-      商品设置
+      <GoodsSetting/>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import RechargeManage from "./components/RechargeManage";
 
 export default () => {
   return (
     <div>
-      充值管理
+      <RechargeManage/>
     </div>
   )
 }
