@@ -70,6 +70,11 @@ const Menus = ({onMenuClick}) => {
           <span>支出统计</span>
         </Link>
       </Menu.Item>
+      <Menu.Item key={'10'} onClick={() => {onMenuClick('10')}}>
+        <Link to='/order-manage'>
+          <span>订单管理</span>
+        </Link>
+      </Menu.Item>
     </Menu>
   )
 };

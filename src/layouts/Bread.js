@@ -12,6 +12,7 @@ const breadcrumbNameMap = {
   '/withdraw-examine': '提现审核',
   '/expenditure-statistics': '支出统计',
   '/user-manage-admin': '管理员管理',
+  '/order-manage':'订单管理'
 };
 
 const Bread = ({location}) => {

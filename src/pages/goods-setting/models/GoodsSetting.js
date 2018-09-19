@@ -29,16 +29,6 @@ export default {
       })
 
     },
-    * getHashrates({payload}, {call, put}) {
-      const response = yield call(service.getHashrates);
-      yield put({
-        type: 'updateState',
-        payload: {
-          hashrates: response
-        }
-      })
-
-    },
     * addHashrates({payload}, {call, put}) {
       const response = yield call(service.addHashrates,payload);
       yield put({
