@@ -1,9 +1,10 @@
 import React from 'react'
+import Income from "./components/Income";
 
 export default () => {
   return (
     <div>
-      收入统计
+      <Income/>
     </div>
   )
 }

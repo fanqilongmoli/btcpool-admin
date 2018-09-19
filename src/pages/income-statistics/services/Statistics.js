@@ -7,7 +7,7 @@ const {apiPrefix} = config;
  * 支出统计
  * @param start
  * @param end
- * @param type
+ * @param type 1年 2月 3星期 4天
  * @returns {*}
  */
 export function expense(start,end,type) {
@@ -21,7 +21,7 @@ export function expense(start,end,type) {
  * 收入统计
  * @param start
  * @param end
- * @param type
+ * @param type 1年 2月 3星期 4天
  * @returns {*}
  */
 export function income(start,end,type) {
