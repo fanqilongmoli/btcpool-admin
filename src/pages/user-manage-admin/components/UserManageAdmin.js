@@ -1,9 +1,25 @@
 import React from 'react'
-import {Table, Divider,Row,Col,Button} from 'antd'
+import {Table, Divider, Row, Col, Button} from 'antd'
 import {connect} from 'dva'
+import UserModal from "./UserModal";
 
 
-const UserManageAdmin = ({userManageAdmin, loading}) => {
+const UserManageAdmin = ({dispatch,userManageAdmin, loading}) => {
+
+  const saveAdminUser = (values) => {
+    dispatch({
+      type:'userManageAdmin/addAdminUser',
+      payload:{...values}
+    })
+
+  };
+  const delAdminUser = (username) =>{
+    dispatch({
+      type:'userManageAdmin/delAdminUser',
+      payload:{username:username}
+    })
+  };
+
   const columns = [{
     title: '用户名',
     dataIndex: 'username',
@@ -18,9 +34,11 @@ const UserManageAdmin = ({userManageAdmin, loading}) => {
       key: 'action',
       render: (text, record) => (
         <span>
-      <a href="javascript:;">修改 {record.username}</a>
+          <UserModal record={record} onOk={saveAdminUser} title={'修改'}>
+            <a href="javascript:;">修改</a>
+          </UserModal>
       <Divider type="vertical"/>
-      <a href="javascript:;">删除</a>
+      <a href="javascript:;" onClick={()=>{delAdminUser(record.username)}}>删除</a>
     </span>
       ),
     }
@@ -30,7 +48,9 @@ const UserManageAdmin = ({userManageAdmin, loading}) => {
     <div>
       <Row>
         <Col>
-          <Button>添加管理员</Button>
+          <UserModal onOk={saveAdminUser} title={'添加管理员'}>
+            <Button type="primary">添加管理员</Button>
+          </UserModal>
         </Col>
       </Row>
       <Table

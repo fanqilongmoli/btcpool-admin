@@ -31,6 +31,20 @@ export default {
       })
 
     },
+    * addAdminUser({payload}, {call, put}) {
+      const response = yield call(userManageService.addAdminUser,payload);
+      yield put({
+        type: 'accounts',
+        payload: {page: 0, size: 10}
+      })
+    },
+    * delAdminUser({payload}, {call, put}) {
+      const response = yield call(userManageService.delAdminUser,payload.username);
+      yield put({
+        type: 'accounts',
+        payload: {page: 0, size: 10}
+      })
+    },
   },
   subscriptions: {
     setup({dispatch, history}) {
