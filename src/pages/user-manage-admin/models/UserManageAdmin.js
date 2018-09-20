@@ -53,7 +53,7 @@ export default {
         if (pathname === '/user-manage-admin') {
           dispatch({
             type: 'accounts',
-            payload: {page: 0, size: 10}
+            payload: {page: 0, size: 1000}
           });
         }
       });

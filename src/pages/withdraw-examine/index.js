@@ -1,9 +1,10 @@
 import React from 'react'
+import Withdraw from "./components/Withdraw";
 
 export default () => {
   return (
     <div>
-      提现审核
+      <Withdraw/>
     </div>
   )
 }

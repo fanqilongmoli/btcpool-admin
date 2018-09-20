@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table,Row,Col,Button} from 'antd'
+import {Table,Row,Col,Button,Pagination} from 'antd'
 import {connect} from 'dva'
 
 const columns = [{
@@ -21,7 +21,16 @@ const columns = [{
 },
 ];
 
-const UserManage = ({userManage, loading}) => {
+const UserManage = ({dispatch,userManage, loading}) => {
+
+  const {users} = userManage;
+  const pageChange = (page, pageSize) => {
+    dispatch({
+      type: 'userManage/accounts',
+      payload: {page: page - 1, size: pageSize}
+    })
+  };
+
   return (
     <div>
 
@@ -30,7 +39,9 @@ const UserManage = ({userManage, loading}) => {
         dataSource={userManage.users.content}
         columns={columns}
         loading={loading.models.userManage}
+        pagination={false}
         rowKey={record => record.salt}/>
+      <Pagination onChange={pageChange} pageSize={users.size} current={users.number + 1} total={users.totalElements}/>
 
     </div>
   )

@@ -2,19 +2,6 @@ import React from 'react';
 import {connect} from 'dva';
 import {Table, Row, Col, Button, Pagination} from 'antd'
 
-// "cost": 0,
-// "createdTime": "2018-09-19T15:59:31.403Z",
-// "endTime": "2018-09-19T15:59:31.403Z",
-// "fee": 0,
-// "hash": 0,
-// "id": 0,
-// "modifiedTime": "2018-09-19T15:59:31.403Z",
-// "period": 0,
-// "rateId": 0,
-// "startTime": "2018-09-19T15:59:31.403Z",
-// "state": 0,
-// "username": "string"
-
 const OrderManage = ({dispatch, orderManage, loading}) => {
 
   const columns = [
@@ -75,7 +62,7 @@ const OrderManage = ({dispatch, orderManage, loading}) => {
         columns={columns}
         pagination={false}
         rowKey={record => record.salt}/>
-      <Pagination onChange={pageChange} size={orders.size} current={orders.number + 1} total={orders.totalElements}/>
+      <Pagination onChange={pageChange} pageSize={orders.size} current={orders.number + 1} total={orders.totalElements}/>
     </div>)
 };
 

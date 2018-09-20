@@ -7,7 +7,8 @@ export default {
   namespace: 'userManage',
 
   state: {
-    users: {}
+    users: {},
+    currentPage: 0
   },
 
   reducers: {
@@ -25,7 +26,7 @@ export default {
       yield put({
         type: 'updateState',
         payload: {
-          users: response
+          users: response, currentPage: page
         }
       })
 
