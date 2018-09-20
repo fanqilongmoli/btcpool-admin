@@ -7,7 +7,8 @@ export default {
   namespace: 'orderManage',
 
   state: {
-    orders: {}
+    orders: {},
+    currentPage: 0,
   },
 
   reducers: {
@@ -25,16 +26,17 @@ export default {
       yield put({
         type: 'updateState',
         payload: {
-          orders: response
+          orders: response, currentPage: page
         }
       })
     },
-    * ordersSucceed({payload}, {call, put}) {
+    * ordersSucceed({payload}, {call, put, select}) {
 
       const response = yield call(service.ordersSucceed, payload.id);
+      const orderManage = yield select(state => state.orderManage);
       yield put({
         type: 'orders',
-        payload: {page: 0, size: 10}
+        payload: {page: orderManage.currentPage , size: 10}
       })
 
     },

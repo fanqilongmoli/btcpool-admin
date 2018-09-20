@@ -24,6 +24,6 @@ export function orders(page,size) {
 export function ordersSucceed(id) {
   return request({
     url: `${apiPrefix}/api/hash-orders/${id}/succeed`,
-    method: 'get',
+    method: 'post',
   })
 }

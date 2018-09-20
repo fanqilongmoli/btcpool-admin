@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'dva';
-import {Table, Row, Col, Button} from 'antd'
+import {Table, Row, Col, Button, Pagination} from 'antd'
 
 // "cost": 0,
 // "createdTime": "2018-09-19T15:59:31.403Z",
@@ -24,24 +24,19 @@ const OrderManage = ({dispatch, orderManage, loading}) => {
       key: 'id'
     },
     {
-      title: 'username',
+      title: '用户名',
       dataIndex: 'username',
       key: 'username'
     },
     {
-      title: 'hash',
+      title: '购买算力',
       dataIndex: 'hash',
       key: 'hash'
     },
     {
-      title: 'startTime',
-      dataIndex: 'startTime',
-      key: 'startTime'
-    },
-    {
-      title: 'endTime',
-      dataIndex: 'endTime',
-      key: 'endTime'
+      title: '产品ID',
+      dataIndex: 'rateId',
+      key: 'rateId'
     },
     {
       title: '操作',
@@ -62,6 +57,15 @@ const OrderManage = ({dispatch, orderManage, loading}) => {
       payload: {id: id}
     })
   };
+
+  const pageChange = (page, pageSize) => {
+    dispatch({
+      type: 'orderManage/orders',
+      payload: {page: page - 1, size: pageSize}
+    })
+  };
+
+  const {orders} = orderManage;
   return (
     <div>
       <Table
@@ -69,7 +73,9 @@ const OrderManage = ({dispatch, orderManage, loading}) => {
         dataSource={orderManage.orders.content}
         loading={loading.models.orderManage}
         columns={columns}
+        pagination={false}
         rowKey={record => record.salt}/>
+      <Pagination onChange={pageChange} size={orders.size} current={orders.number + 1} total={orders.totalElements}/>
     </div>)
 };
 

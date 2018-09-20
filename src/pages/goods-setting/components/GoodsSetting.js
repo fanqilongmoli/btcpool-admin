@@ -23,8 +23,8 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
     title: 'id',
     dataIndex: 'id',
     key: 'id',
-  }, {
-    title: '总量',
+  },  {
+    title: '总量(TH/s)',
     dataIndex: 'total',
     key: 'total',
   },
@@ -34,31 +34,20 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
       key: 'price',
     },
     {
-      title: '产品周期',
+      title: '产品周期(年)',
       dataIndex: 'period',
       key: 'period',
     },
     {
-      title: '单笔最大交易量',
-      dataIndex: 'max',
-      key: 'max',
+      title: '余额(TH/s)',
+      dataIndex: 'balance',
+      key: 'balance',
     },
     {
-      title: '单笔最小交易量',
+      title: '最小交易规格(TH/s)',
       dataIndex: 'min',
       key: 'min',
     },
-    {
-      title: '开始时间',
-      dataIndex: 'startTime',
-      key: 'startTime',
-    },
-    {
-      title: '结束时间',
-      dataIndex: 'endTime',
-      key: 'endTime',
-    },
-
     {
       title: '操作',
       key: 'action',
@@ -73,7 +62,6 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
 
   const saveGoods = (values) => {
 
-    values.startTime=new Date(values.startTime._d).getTime();
     console.log('saveGoods',values);
     dispatch({
       type:'goods/addHashrates',
@@ -100,7 +88,7 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
       </Row>
       <Table
         bordered={true}
-        dataSource={goods.hashrates.content}
+        dataSource={goods.tableData}
         loading={loading.models.goods}
         columns={columns}
         rowKey={record => record.salt}/>

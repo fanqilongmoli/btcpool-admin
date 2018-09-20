@@ -7,7 +7,7 @@ export default {
   namespace: 'goods',
 
   state: {
-    hashrates: {}
+    tableData: []
   },
 
   reducers: {
@@ -24,7 +24,7 @@ export default {
       yield put({
         type: 'updateState',
         payload: {
-          hashrates: response
+          tableData: response.data.content
         }
       })
 

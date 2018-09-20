@@ -78,14 +78,14 @@ class GoodsModal extends React.Component {
           <Form horizontal onSubmit={this.okHandler}>
             <FormItem
               {...formItemLayout}
-              label="产品周期"
+              label="产品周期(年)"
             >
               {
                 getFieldDecorator('period', {
                   rules: [
                     {
                       required: true,
-                      message: '产品周期'
+                      message: '产品周期(年)'
                     },
                   ],
                 })(<InputNumber/>)
@@ -93,7 +93,7 @@ class GoodsModal extends React.Component {
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label="单价"
+              label="单价(btc)"
             >
               {
                 getFieldDecorator('price', {
@@ -108,7 +108,7 @@ class GoodsModal extends React.Component {
             </FormItem>
              <FormItem
                {...formItemLayout}
-               label="总量"
+               label="总量(算力总量)"
              >
               {
                 getFieldDecorator('total', {
@@ -123,50 +123,19 @@ class GoodsModal extends React.Component {
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label="单笔最大交易量"
-            >
-              {
-                getFieldDecorator('max', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入单笔最大交易量'
-                    },
-                  ],
-                })(<InputNumber />)
-              }
-            </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label="单笔最小交易量"
+              label="最小交易规格"
             >
               {
                 getFieldDecorator('min', {
                   rules: [
                     {
                       required: true,
-                      message: '请输入单笔最小交易量'
+                      message: '请输入单笔最小交易规格'
                     },
                   ],
                 })(<InputNumber />)
               }
             </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label="开始时间"
-            >
-              {
-                getFieldDecorator('startTime', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入开始时间'
-                    },
-                  ],
-                })(<DatePicker />)
-              }
-            </FormItem>
-
           </Form>
         </Modal>
       </span>
