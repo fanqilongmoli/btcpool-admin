@@ -2,7 +2,7 @@ export default {
   history: 'hash',
   hash: true,
 
-  publicPath: "/static/",
+  publicPath: "./",
   proxy: {
     "/api": {
       "target": "http://localhost:8080/",

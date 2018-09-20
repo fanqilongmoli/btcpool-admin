@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'dva';
+import moment from 'moment-timezone'
 import {Table, Row, Col, Button, Pagination} from 'antd'
 
 const OrderManage = ({dispatch, orderManage, loading}) => {
@@ -24,6 +25,15 @@ const OrderManage = ({dispatch, orderManage, loading}) => {
       title: '产品ID',
       dataIndex: 'rateId',
       key: 'rateId'
+    },
+    {
+      title: '创建时间',
+      dataIndex: 'createdTime',
+      key: 'createdTime',
+      render: (text, record) =>{
+        return moment(record.createdTime).format('YYYY-MM-DD HH:mm:ss')
+      }
+
     },
     {
       title: '操作',

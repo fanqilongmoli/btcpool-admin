@@ -7,7 +7,7 @@ export default {
   namespace: 'recharge',
 
   state: {
-    users: {}
+    charges: {}
   },
 
   reducers: {
@@ -25,7 +25,7 @@ export default {
       yield put({
         type: 'updateState',
         payload: {
-          users: response
+          charges: response
         }
       })
 
