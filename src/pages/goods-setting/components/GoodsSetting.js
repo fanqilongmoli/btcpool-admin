@@ -18,12 +18,12 @@ import {Table, Row, Col, Button} from 'antd'
 import {connect} from 'dva'
 import GoodsModal from "./GoodsModal";
 
-const GoodsSetting = ({dispatch,goods, loading}) => {
+const GoodsSetting = ({dispatch, goods, loading}) => {
   const columns = [{
     title: 'id',
     dataIndex: 'id',
     key: 'id',
-  },  {
+  }, {
     title: '总量(TH/s)',
     dataIndex: 'total',
     key: 'total',
@@ -48,12 +48,29 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
       dataIndex: 'min',
       key: 'min',
     },
+
+    {
+      title: '电费类型',
+      dataIndex: 'electricityFeeType',
+      key: 'electricityFeeType',
+      render: (text, record) => {
+        return record.electricityFeeType ==1?'按天计费':'包含电费'
+
+      }
+    },
+    {
+      title: '电费价格(btc/天)',
+      dataIndex: 'electricityFee',
+      key: 'electricityFee',
+    },
     {
       title: '操作',
       key: 'action',
       render: (text, record) => (
         <span>
-          <a href="javascript:;" onClick={() => {delGoods(record.id)}}>删除</a>
+          <a href="javascript:;" onClick={() => {
+            delGoods(record.id)
+          }}>删除</a>
         </span>
       ),
     }
@@ -62,17 +79,17 @@ const GoodsSetting = ({dispatch,goods, loading}) => {
 
   const saveGoods = (values) => {
 
-    console.log('saveGoods',values);
+    console.log('saveGoods', values);
     dispatch({
-      type:'goods/addHashrates',
-      payload:{...values}
+      type: 'goods/addHashrates',
+      payload: {...values}
     })
   };
 
   const delGoods = (id) => {
     dispatch({
-      type:'goods/delHashrates',
-      payload:{id:id}
+      type: 'goods/delHashrates',
+      payload: {id: id}
     })
   };
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Modal, Form, Input,InputNumber,DatePicker} from 'antd';
+import {Modal, Form, Input, InputNumber, DatePicker, Select} from 'antd';
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 class GoodsModal extends React.Component {
 
@@ -37,6 +38,12 @@ class GoodsModal extends React.Component {
     });
   };
 
+  onSelect = (value, option)=>{
+      this.setState({
+        need:value==1
+      });
+  };
+
   render() {
 
     /**
@@ -55,11 +62,11 @@ class GoodsModal extends React.Component {
      * @constructor
      */
 
-    const {children,title} = this.props;
+    const {children, title} = this.props;
     const {getFieldDecorator} = this.props.form;
     const formItemLayout = {
-      labelCol: {span: 6},
-      wrapperCol: {span: 14},
+      labelCol: {span: 8},
+      wrapperCol: {span: 8},
     };
     // console.log('this.props', this.props);
 
@@ -88,7 +95,7 @@ class GoodsModal extends React.Component {
                       message: '产品周期(年)'
                     },
                   ],
-                })(<InputNumber/>)
+                })(<InputNumber style={{width:'100%'}}/>)
               }
             </FormItem>
             <FormItem
@@ -103,7 +110,7 @@ class GoodsModal extends React.Component {
                       message: '请输入单价'
                     },
                   ],
-                })(<InputNumber />)
+                })(<InputNumber style={{width:'100%'}}/>)
               }
             </FormItem>
              <FormItem
@@ -118,7 +125,7 @@ class GoodsModal extends React.Component {
                       message: '请输入总量'
                     },
                   ],
-                })(<InputNumber />)
+                })(<InputNumber style={{width:'100%'}}/>)
               }
             </FormItem>
             <FormItem
@@ -133,7 +140,41 @@ class GoodsModal extends React.Component {
                       message: '请输入单笔最小交易规格'
                     },
                   ],
-                })(<InputNumber />)
+                })(<InputNumber style={{width:'100%'}}/>)
+              }
+            </FormItem>
+             <FormItem
+               {...formItemLayout}
+               label="电费类型"
+             >
+              {
+                getFieldDecorator('electricityFeeType', {
+                  rules: [
+                    {
+                      required: true,
+                      message: '请选择电费类型'
+                    },
+                  ],
+                })(<Select onSelect={this.onSelect}>
+                    <Option value="0">包含电费</Option>
+                    <Option value="1">按天计费</Option>
+                  </Select>
+                )}
+            </FormItem>
+            <FormItem
+              {...formItemLayout}
+              label="电费单价(BTC/天)"
+              style={{ display: this.state.need ? 'block' : 'none' }}
+            >
+              {
+                getFieldDecorator('electricityFee', {
+                  rules: [
+                    {
+                      required: this.state.need,
+                      message: '请输入电费价格'
+                    },
+                  ],
+                })(<InputNumber style={{width:'100%'}}/>)
               }
             </FormItem>
           </Form>

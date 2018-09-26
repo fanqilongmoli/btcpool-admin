@@ -29,11 +29,11 @@ const Menus = ({onMenuClick}) => {
 
       </SubMenu>
 
-      <Menu.Item key={'2'} onClick={() => {onMenuClick('2')}}>
-        <Link to='/award-setting'>
-          <span>奖励设置</span>
-        </Link>
-      </Menu.Item>
+      {/*<Menu.Item key={'2'} onClick={() => {onMenuClick('2')}}>*/}
+        {/*<Link to='/award-setting'>*/}
+          {/*<span>奖励设置</span>*/}
+        {/*</Link>*/}
+      {/*</Menu.Item>*/}
       <Menu.Item key={'3'} onClick={() => {onMenuClick('3')}}>
         <Link to='/sms-server'>
           <span>短信服务</span>
@@ -47,7 +47,7 @@ const Menus = ({onMenuClick}) => {
       </Menu.Item >
       <Menu.Item key={'5'} onClick={() => {onMenuClick('5')}}>
         <Link to='/product-calc'>
-          <span>生产力计算</span>
+          <span>参数管理</span>
         </Link>
       </Menu.Item>
       <Menu.Item key={'6'} onClick={() => {onMenuClick('6')}}>
