@@ -25,6 +25,7 @@ export default {
       locale: {},
       library: 'react',
       hardSource: false,
+      dynamicImport: true,
       // pwa: {},
       // hd: true,
       fastClick: true

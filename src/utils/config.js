@@ -5,5 +5,5 @@ module.exports = {
   loginPage: '/login',
   register:'/register',
   forget:'/forget',
-  apiPrefix: '/api',
+  apiPrefix: '',
 };
