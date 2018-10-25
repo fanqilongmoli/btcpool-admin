@@ -315,7 +315,7 @@
       <workItem from="1539054460293" duration="587000" />
       <workItem from="1539137441729" duration="387000" />
       <workItem from="1539148451146" duration="6979000" />
-      <workItem from="1540373163986" duration="2976000" />
+      <workItem from="1540373163986" duration="3226000" />
     </task>
     <task id="LOCAL-00001" summary="去除图标">
       <created>1537174223765</created>
@@ -419,7 +419,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66222000" />
+    <option name="totallyTimeSpent" value="66472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="-280" width="1920" height="1080" extended-state="0" />
